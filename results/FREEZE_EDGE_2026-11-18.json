@@ -1,0 +1,19 @@
+{
+ "freeze_id": "EDGE_2026-11-18",
+ "status": "PASS",
+ "n_rows": 936,
+ "runs": {
+  "edge_start0_v1": {
+   "rows": 351,
+   "sha256": "11a9e1872bdb85ebd54df9ec3f7043aaa2d5ea3dbf1bb1a391052fe3c474650b"
+  },
+  "edge_start64_v1": {
+   "rows": 351,
+   "sha256": "1f29bbc30b0ab4fc0927a46a1cef9ba91d6d4a55468213ff00e38bb6f4c53442"
+  },
+  "edge_start70_v1": {
+   "rows": 234,
+   "sha256": "e5db27fb8a9db43fa22fa88a60e6eecdd5b7281174c3ec3b10dcb7a4136f5618"
+  }
+ }
+}

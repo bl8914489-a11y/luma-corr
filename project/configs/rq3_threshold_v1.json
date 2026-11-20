@@ -1,0 +1,22 @@
+{
+ "name": "rq3_threshold_v1",
+ "version": "1.0.0",
+ "created_utc": "2026-11-17T08:40:00Z",
+ "description": "Pre-registered validation/test split and CUSUM threshold selection. The test split is never used for selection.",
+ "start": 30,
+ "lengths": [1, 4, 12],
+ "injections": ["A", "B", "B13"],
+ "split": {
+  "rule": "sha256(sequence name) ascending; first 4 validation, rest test",
+  "validation": ["paint", "sailboat", "book", "retriever"],
+  "test": ["fish", "unicorn", "yoga", "knight", "rabbit", "astronaut", "ship", "asteroids", "horse"]
+ },
+ "grid": {"k": [0.25, 0.5], "h": [2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 6.0, 8.0], "smooth": 3, "min_len": 2},
+ "selection": {"length": 12, "criterion": "max mean F1 subject to mean precision >= 0.60", "tie": "higher recall"},
+ "union": {"kind": "hist_kl", "bins": 64, "smooth": 3, "z": 3.0, "enter": 2, "exit": 3, "lo_ratio": 0.5},
+ "notes": [
+  "Split fixed by hash before any threshold selection.",
+  "Only validation sequences are used to choose k/h and whether to union with the global-histogram detector.",
+  "Test metrics are reported once at the selected operating point; baseline h=6 is reported for comparison."
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "freeze_id": "NATURAL_PRE_2026-11-19",
+ "status": "PASS",
+ "preliminary": true,
+ "n_rows": 95,
+ "artifacts": {
+  "per_clip.csv": {
+   "sha256": "7cb5f3a359125f8d360c3109c9f946f308ba1f3cf22a7d4ae9706f02545d4505"
+  },
+  "summary.json": {
+   "sha256": "2176b53bb80c3ecbea76cb94f845a495ecf70a4abe3e1f952164f12a9637d0e1"
+  }
+ }
+}

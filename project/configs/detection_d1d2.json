@@ -1,0 +1,48 @@
+{
+ "name": "rq3_d1d2_v1",
+ "version": "1.0.0",
+ "created_utc": "2026-11-17T08:10:00Z",
+ "description": "RQ3 D1/D2 experiments requested by the novelty report: faithful BlazeBVD Eq.(5) baseline, D1 sigma/bin/KL-JS sweep, D2 interval post-processing with component ablation, and interval-level evaluation.",
+ "start": 30,
+ "lengths": [1, 4, 12],
+ "seed": 20261117,
+ "injections": [
+  {"id": "CLEAN", "kind": "none"},
+  {"id": "A", "kind": "offset", "amount": 20.0, "direction": -1, "gamma": 1.0},
+  {"id": "B", "kind": "gamma", "amount": 0.0, "direction": -1, "gamma": 2.0},
+  {"id": "B13", "kind": "gamma", "amount": 0.0, "direction": -1, "gamma": 1.3}
+ ],
+ "detectors": [
+  {"id": "median_dev", "kind": "median_dev", "window": 7, "threshold": 1.0,
+   "note": "legacy local-median deviation"},
+  {"id": "eq5_kl_s2_n5", "kind": "eq5", "bins": 64, "sigma": 2.0, "neighbors": 5, "mode": "kl",
+   "note": "faithful BlazeBVD Eq.(5): smoothed-vs-original KL, local-mean threshold"},
+  {"id": "eq5_js_s2_n5", "kind": "eq5", "bins": 64, "sigma": 2.0, "neighbors": 5, "mode": "js"},
+  {"id": "d1_js_s2", "kind": "d1", "bins": 64, "sigma": 2.0, "mode": "js", "k": 3.0,
+   "note": "D1 score + robust global threshold, no interval post-processing"},
+  {"id": "d2_full", "kind": "d2", "bins": 64, "sigma": 2.0, "mode": "js", "k": 3.0,
+   "lo_ratio": 0.5, "min_len": 2, "max_gap": 2, "refine": true},
+  {"id": "d2_no_dual", "kind": "d2", "bins": 64, "sigma": 2.0, "mode": "js", "k": 3.0,
+   "lo_ratio": 1.0, "min_len": 2, "max_gap": 2, "refine": true},
+  {"id": "d2_no_gap", "kind": "d2", "bins": 64, "sigma": 2.0, "mode": "js", "k": 3.0,
+   "lo_ratio": 0.5, "min_len": 2, "max_gap": 0, "refine": true},
+  {"id": "d2_no_refine", "kind": "d2", "bins": 64, "sigma": 2.0, "mode": "js", "k": 3.0,
+   "lo_ratio": 0.5, "min_len": 2, "max_gap": 2, "refine": false},
+  {"id": "d2_no_minlen", "kind": "d2", "bins": 64, "sigma": 2.0, "mode": "js", "k": 3.0,
+   "lo_ratio": 0.5, "min_len": 1, "max_gap": 2, "refine": true},
+  {"id": "hist_kl_cusum", "kind": "cusum", "bins": 64, "window": 41, "smooth": 3,
+   "k": 0.5, "h": 6.0, "min_len": 2}
+ ],
+ "sweep": {
+  "bins": [32, 64, 128],
+  "sigmas": [1.0, 2.0, 4.0],
+  "modes": ["kl", "js"],
+  "lengths": [12]
+ },
+ "notes": [
+  "Eq.(5) is a baseline, not a contribution: KL(smoothed histogram || original histogram) with a local sliding-mean threshold.",
+  "D2 components: dual threshold, minimum duration, gap merge, boundary refinement; each is ablated.",
+  "All thresholds are label-free (median + k*MAD) or fixed by the Eq.(5) rule.",
+  "No labels are used to choose sigma/bin/k; the sweep is reported as an ablation."
+ ]
+}

@@ -1,0 +1,13 @@
+{
+ "freeze_id": "MULTI_SCAN_2026-11-18",
+ "status": "PASS",
+ "n_rows": 52,
+ "artifacts": {
+  "per_condition.csv": {
+   "sha256": "c6406e983bd726a81a0b65657a40480882e4d157ed690d0dc9458c39d3c4213b"
+  },
+  "summary.json": {
+   "sha256": "3205a5b90e9bf9ccbff6fc0a89aedc88535f014bea2688f7def5bc7b0d176f79"
+  }
+ }
+}

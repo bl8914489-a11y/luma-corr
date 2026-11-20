@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+data/frames/
+third_party/
+交付/
+*.zip

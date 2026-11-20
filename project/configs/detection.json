@@ -1,0 +1,30 @@
+{
+ "name": "rq3_detection_v2",
+ "version": "2.0.0",
+ "created_utc": "2026-11-17T04:40:00Z",
+ "description": "RQ3 detection comparison: legacy local-median deviation vs global-median JS vs the proposed rolling-histogram JS + robust z + CUSUM detector. Clean sequences probe false positives.",
+ "start": 30,
+ "lengths": [1, 4, 12],
+ "seed": 20261117,
+ "injections": [
+  {"id": "CLEAN", "kind": "none", "description": "no injection: false-positive probe"},
+  {"id": "A", "kind": "offset", "amount": 20.0, "direction": -1, "gamma": 1.0},
+  {"id": "B", "kind": "gamma", "amount": 0.0, "direction": -1, "gamma": 2.0},
+  {"id": "B13", "kind": "gamma", "amount": 0.0, "direction": -1, "gamma": 1.3}
+ ],
+ "detectors": [
+  {"id": "median_dev", "kind": "median_dev", "window": 7, "threshold": 1.0,
+   "description": "legacy |frame luma - 7-frame local median| > 1.0"},
+  {"id": "hist_kl", "kind": "hist_kl", "bins": 64, "smooth": 3, "z": 3.0, "enter": 2, "exit": 3, "lo_ratio": 0.5,
+   "description": "intermediate: JS vs global median histogram, robust threshold + hysteresis"},
+  {"id": "hist_kl_cusum", "kind": "hist_kl_cusum", "bins": 64, "window": 41, "smooth": 3,
+   "k": 0.5, "h": 6.0, "min_len": 2,
+   "description": "proposed: JS vs rolling median histogram, max(z_JS, z_luma), CUSUM, segment pruning"}
+ ],
+ "notes": [
+  "All hist_kl thresholds are label-free (robust median/MAD of the score; CUSUM k/h are fixed signal-processing constants).",
+  "The legacy detector keeps the fixed 1.0 threshold used by the prior study.",
+  "CLEAN runs are evaluated by false-positive rate only.",
+  "Parameter sensitivity for the CUSUM detector is reported separately as an ablation."
+ ]
+}

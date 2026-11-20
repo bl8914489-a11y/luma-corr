@@ -1,0 +1,13 @@
+{
+ "freeze_id": "E2E_2026-11-21",
+ "status": "PASS",
+ "n_rows": 624,
+ "artifacts": {
+  "per_condition.csv": {
+   "sha256": "c7f177756ce9ced89eee27695cc253e2db344fd32e548253cdd223cd64e55ddb"
+  },
+  "summary.json": {
+   "sha256": "bfd4314449bf1d49bf5ff4e3b4a6b286a66353e9e25bd1d2db7d27cd9833df5e"
+  }
+ }
+}

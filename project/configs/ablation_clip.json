@@ -1,0 +1,19 @@
+{
+ "name": "ablation_clip_v1",
+ "version": "1.0.0",
+ "created_utc": "2026-11-17T04:50:00Z",
+ "description": "Ablation: hard clipping versus a tanh highlight shoulder (soft knee at 235) in the proposed offset correction.",
+ "start": 30,
+ "lengths": [1, 4, 12],
+ "seed": 20261117,
+ "injections": [
+  {"id": "A", "kind": "offset", "amount": 20.0, "direction": -1, "gamma": 1.0},
+  {"id": "B", "kind": "gamma", "amount": 0.0, "direction": -1, "gamma": 2.0},
+  {"id": "B13", "kind": "gamma", "amount": 0.0, "direction": -1, "gamma": 1.3}
+ ],
+ "methods": [
+  {"id": "hard", "kind": "offset_linear", "k": 3, "scope": "local", "soft_knee": 0.0, "label": "hard clip"},
+  {"id": "soft", "kind": "offset_linear", "k": 3, "scope": "local", "soft_knee": 235.0, "label": "tanh shoulder at 235"}
+ ],
+ "proposed": "hard"
+}

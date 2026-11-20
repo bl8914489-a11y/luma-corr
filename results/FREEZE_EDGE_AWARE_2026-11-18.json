@@ -1,0 +1,15 @@
+{
+ "freeze_id": "EDGE_AWARE_2026-11-18",
+ "status": "PASS",
+ "n_rows": 702,
+ "runs": {
+  "edge_aware_start0_v1": {
+   "rows": 351,
+   "sha256": "860adb942b6f2406efcb0f74ea39f442961510859992207f1e5e44242c303d83"
+  },
+  "edge_aware_start64_v1": {
+   "rows": 351,
+   "sha256": "5009079c582f486f801f0c965fabcea2b017ca4e6adb0191baf6c0d3ba7257a0"
+  }
+ }
+}

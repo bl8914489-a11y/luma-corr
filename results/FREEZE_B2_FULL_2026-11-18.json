@@ -1,0 +1,78 @@
+{
+ "freeze_id": "B2_FULL_2026-11-18",
+ "status": "PASS",
+ "checks": [
+  {
+   "name": "117 cases",
+   "value": 117,
+   "pass": true
+  },
+  {
+   "name": "351 method rows",
+   "value": 351,
+   "pass": true
+  },
+  {
+   "name": "len1 39 cases",
+   "value": 39,
+   "pass": true
+  },
+  {
+   "name": "len4 39 cases",
+   "value": 39,
+   "pass": true
+  },
+  {
+   "name": "len12 39 cases",
+   "value": 39,
+   "pass": true
+  },
+  {
+   "name": "B2 mean present",
+   "value": true,
+   "pass": true
+  }
+ ],
+ "n_cases": 117,
+ "n_rows": 351,
+ "interval_mean": {
+  "noop": {
+   "y_mae": 31.40735569327645,
+   "rgb_mae": 31.358771085059878,
+   "psnr": 19.041720313604408,
+   "ssim": 0.9006094786682064,
+   "outfrac": 0.0,
+   "outside_rgb_mae": 0.0,
+   "boundary": 62.78559435715635
+  },
+  "A3": {
+   "y_mae": 4.553531159387355,
+   "rgb_mae": 5.053341583875056,
+   "psnr": 34.71219134711736,
+   "ssim": 0.9851871114918459,
+   "outfrac": 0.0,
+   "outside_rgb_mae": 0.0,
+   "boundary": 3.9515393703493276
+  },
+  "B2_all_in_one": {
+   "y_mae": 9.769042475934041,
+   "rgb_mae": 10.412621001798769,
+   "psnr": 26.806601650769604,
+   "ssim": 0.9614276736014646,
+   "outfrac": 0.9991112576228376,
+   "outside_rgb_mae": 8.84705191632848,
+   "boundary": 3.609310240558074
+  }
+ },
+ "artifacts": {
+  "per_case.csv": {
+   "sha256": "6f968ae7b46778893a984fa218549eef282db46a86b03a17cba1ff829c51ef0c",
+   "bytes": 59159
+  },
+  "summary.json": {
+   "sha256": "dd3e63ebb10c247dfcaf6dc880b7b8ef64a105db77b7650c2bd28f30ae0b6c55",
+   "bytes": 1063
+  }
+ },
+ "created_utc": "2026-11-18T11:59:20.801094+00:00"
+}

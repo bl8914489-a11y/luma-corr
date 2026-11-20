@@ -1,0 +1,24 @@
+{
+ "freeze_id": "MULTI_INTERVAL_2026-11-18",
+ "status": "PASS",
+ "checks": [
+  {
+   "name": "156 rows",
+   "value": 156,
+   "pass": true
+  },
+  {
+   "name": "13 sequences",
+   "value": 13,
+   "pass": true
+  }
+ ],
+ "artifacts": {
+  "per_condition.csv": {
+   "sha256": "d25fcc82869bc6926d634f1037c13e1323f538f7d3d8f76a5392fe4e140cdc42"
+  },
+  "summary.json": {
+   "sha256": "ffbc8d99ee2a9e489ccf654b68db82230a8755090cd680a3db629f16a44b0bb2"
+  }
+ }
+}

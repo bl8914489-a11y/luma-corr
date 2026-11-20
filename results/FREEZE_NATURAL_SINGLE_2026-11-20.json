@@ -1,0 +1,16 @@
+{
+ "freeze_id": "NATURAL_SINGLE_2026-11-20",
+ "status": "PASS",
+ "single_annotator": true,
+ "no_inter_rater": true,
+ "frame_base": "1based->0based",
+ "n_rows": 100,
+ "artifacts": {
+  "per_clip.csv": {
+   "sha256": "b235524a6458652a5af45b640de8465fc1f5fbac6d5d40520b57ceafe2f365e3"
+  },
+  "summary.json": {
+   "sha256": "1320c67c818aa8d6016c100d44601fedd57f41ee32376aefacaef96b682a475c"
+  }
+ }
+}

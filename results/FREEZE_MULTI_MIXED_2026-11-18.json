@@ -1,0 +1,19 @@
+{
+ "freeze_id": "MULTI_MIXED_2026-11-18",
+ "status": "PASS",
+ "checks": [
+  {
+   "name": "78 rows",
+   "value": 78,
+   "pass": true
+  }
+ ],
+ "artifacts": {
+  "per_condition.csv": {
+   "sha256": "96437a6a51e4fc9135b76579421ded7dba745f7588a4c4b8bdff2a7a7f015c7f"
+  },
+  "summary.json": {
+   "sha256": "f06c519f307f2f3bedc0fa06dba5ff9957f51da25a18d0c8947162ff9c29ebbd"
+  }
+ }
+}

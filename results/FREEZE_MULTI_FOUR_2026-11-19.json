@@ -1,0 +1,13 @@
+{
+ "freeze_id": "MULTI_FOUR_2026-11-19",
+ "status": "PASS",
+ "n_rows": 78,
+ "artifacts": {
+  "per_condition.csv": {
+   "sha256": "e534c921870a36a99926545b919dc55b6447de0f5d0962a653798ddab5e6fdcd"
+  },
+  "summary.json": {
+   "sha256": "1585f7dc5e045a874da44ab303dd010e633914165b19e29be129968fa5e90f9e"
+  }
+ }
+}

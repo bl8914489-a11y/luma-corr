@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper."
+title: "Local Brightness Correction under Known Intervals: A Controlled Benchmark, Sensitivity Analysis, and Reproducibility Study"
+authors:
+  - family-names: "[Author]"
+    given-names: "[Name]"
+year: 2026
+repository-code: "https://github.com/[your-account]/luma-corr"
+license: MIT

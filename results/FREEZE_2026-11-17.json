@@ -1,0 +1,330 @@
+{
+ "freeze_id": "2026-11-17",
+ "created_utc": "2026-11-20T15:16:08.299440+00:00",
+ "status": "PASS",
+ "n_checks": 37,
+ "n_failed": 0,
+ "checks": [
+  {
+   "name": "A3 A len1 dev3 Y MAE",
+   "value": 1.0296,
+   "expected": 1.03,
+   "tolerance": 0.06,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "A3 A len4 dev3 Y MAE",
+   "value": 0.7281,
+   "expected": 0.728,
+   "tolerance": 0.06,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "A3 A len12 dev3 Y MAE",
+   "value": 0.76,
+   "expected": 0.76,
+   "tolerance": 0.06,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "A3 B len1 dev3 Y MAE",
+   "value": 8.6542,
+   "expected": 8.654,
+   "tolerance": 0.06,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "A3 B len4 dev3 Y MAE",
+   "value": 7.8733,
+   "expected": 7.873,
+   "tolerance": 0.06,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "A3 B len12 dev3 Y MAE",
+   "value": 7.8924,
+   "expected": 7.892,
+   "tolerance": 0.06,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "A3 B13 len1 dev3 Y MAE",
+   "value": 3.784,
+   "expected": 3.784,
+   "tolerance": 0.06,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "A3 B13 len4 dev3 Y MAE",
+   "value": 3.013,
+   "expected": 3.013,
+   "tolerance": 0.06,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "A3 B13 len12 dev3 Y MAE",
+   "value": 3.1815,
+   "expected": 3.182,
+   "tolerance": 0.06,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "A1 A len1 dev3 Y MAE",
+   "value": 19.9052,
+   "expected": 19.905,
+   "tolerance": 0.05,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "A2 B len1 dev3 Y MAE",
+   "value": 8.8388,
+   "expected": 8.839,
+   "tolerance": 0.05,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "B clipping sailboat",
+   "value": 4.5273,
+   "expected": 4.53,
+   "tolerance": 0.02,
+   "unit": "%",
+   "pass": true
+  },
+  {
+   "name": "B clipping book",
+   "value": 5.3802,
+   "expected": 5.38,
+   "tolerance": 0.02,
+   "unit": "%",
+   "pass": true
+  },
+  {
+   "name": "B clipping horse",
+   "value": 3.4316,
+   "expected": 3.43,
+   "tolerance": 0.02,
+   "unit": "%",
+   "pass": true
+  },
+  {
+   "name": "CUSUM len12 recall A",
+   "value": 0.7949,
+   "expected": 0.795,
+   "tolerance": 0.01,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "CUSUM len12 recall B",
+   "value": 0.9231,
+   "expected": 0.923,
+   "tolerance": 0.01,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "CUSUM len12 recall B13",
+   "value": 0.7564,
+   "expected": 0.756,
+   "tolerance": 0.01,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "test len12 recall (selected)",
+   "value": 0.7438,
+   "expected": 0.744,
+   "tolerance": 0.01,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "test len12 precision (selected)",
+   "value": 0.6406,
+   "expected": 0.641,
+   "tolerance": 0.01,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "validation len12 recall",
+   "value": 0.9653,
+   "expected": 0.965,
+   "tolerance": 0.01,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "test e2e reduction",
+   "value": 0.6553,
+   "expected": 0.655,
+   "tolerance": 0.01,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "test e2e outFrac",
+   "value": 0.0401,
+   "expected": 0.0401,
+   "tolerance": 0.005,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "B2 interval Y MAE",
+   "value": 12.481,
+   "expected": 12.48,
+   "tolerance": 0.05,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "A3 interval Y MAE (B2 subset)",
+   "value": 4.8352,
+   "expected": 4.84,
+   "tolerance": 0.05,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "B2 outFrac",
+   "value": 0.9995,
+   "expected": 0.9996,
+   "tolerance": 0.001,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "B2 outside RGB MAE",
+   "value": 9.7935,
+   "expected": 9.79,
+   "tolerance": 0.05,
+   "unit": "",
+   "pass": true
+  },
+  {
+   "name": "main report has test recall 0.744",
+   "value": true,
+   "expected": true,
+   "tolerance": 0,
+   "pass": true
+  },
+  {
+   "name": "main report has test e2e 65.5%",
+   "value": true,
+   "expected": true,
+   "tolerance": 0,
+   "pass": true
+  },
+  {
+   "name": "main report has B2 12.48",
+   "value": true,
+   "expected": true,
+   "tolerance": 0,
+   "pass": true
+  },
+  {
+   "name": "RQ3 report has 0.744",
+   "value": true,
+   "expected": true,
+   "tolerance": 0,
+   "pass": true
+  },
+  {
+   "name": "RQ3 report has 4.01%",
+   "value": true,
+   "expected": true,
+   "tolerance": 0,
+   "pass": true
+  },
+  {
+   "name": "B2 report has 12.48",
+   "value": true,
+   "expected": true,
+   "tolerance": 0,
+   "pass": true
+  },
+  {
+   "name": "B2 report has 9.79",
+   "value": true,
+   "expected": true,
+   "tolerance": 0,
+   "pass": true
+  },
+  {
+   "name": "manuscript has test recall 0.744",
+   "value": true,
+   "expected": true,
+   "tolerance": 0,
+   "pass": true
+  },
+  {
+   "name": "manuscript has B2 12.48",
+   "value": true,
+   "expected": true,
+   "tolerance": 0,
+   "pass": true
+  },
+  {
+   "name": "manuscript has B2 99.95%",
+   "value": true,
+   "expected": true,
+   "tolerance": 0,
+   "pass": true
+  },
+  {
+   "name": "unit test count 37",
+   "value": true,
+   "expected": true,
+   "tolerance": 0,
+   "pass": true
+  }
+ ],
+ "failed": [],
+ "artifacts": {
+  "results/runs/tierA_matrix_v1/per_sequence.csv": {
+   "sha256": "d78a563832a59992c1a392025960c7d39e27e1ec19e3677192495b5b3382f79f",
+   "bytes": 553905
+  },
+  "results/runs/rq3_detection_v2/per_condition.csv": {
+   "sha256": "fd201553c1e7ac5d539f4c0217c8969551d81818909ea3dd62b279ea55c13583",
+   "bytes": 50583
+  },
+  "results/runs/rq3_threshold_v1/test_metrics.csv": {
+   "sha256": "2dea20c117a935284f3fbc758a3aba3753b2467c0802f87531172339792dd7f8",
+   "bytes": 14808
+  },
+  "results/runs/rq3_e2e_test_v1/per_condition.csv": {
+   "sha256": "5b40236e32b8eaf38c708c8f3c0761e3ba8eb3249b261a5c0e38fcb23bc078ab",
+   "bytes": 16695
+  },
+  "results/runs/b2_all_in_one_v1/per_case.csv": {
+   "sha256": "b229cb5e5b84d0cfccc3a585ffdf67e630104f59d13ad7d25805b31d29cee50d",
+   "bytes": 7178
+  },
+  "报告/实验执行报告_2026-11-17.docx": {
+   "sha256": "b507e9dd8e72d109f763d75474e945045cb415f0f352b295cf361a67711b229c",
+   "bytes": 53853
+  },
+  "报告/RQ3_D1D2补充实验_2026-11-17.docx": {
+   "sha256": "46a0349400ecc8c7df031bd8dedba210be69a2b1f6e3a877349d7c1dbbffbb40",
+   "bytes": 43108
+  },
+  "报告/B2_All-In-One补充实验_2026-11-18.docx": {
+   "sha256": "48f2751a1a5faa79f7700cbbe49b4d77c7e67166af13b310c9b05066c77c3e3b",
+   "bytes": 541348
+  }
+ },
+ "note": "Only numbers passing this freeze may be quoted in the paper. Changing a number requires a new freeze id."
+}

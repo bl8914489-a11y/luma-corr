@@ -1,0 +1,13 @@
+{
+ "freeze_id": "B2_FOUR_2026-11-19",
+ "status": "PASS",
+ "n_rows": 52,
+ "artifacts": {
+  "per_case.csv": {
+   "sha256": "bd65bc04f926bf2c304363d4db7084d6be56d9d934f7637612bfa7e6ec278b12"
+  },
+  "summary.json": {
+   "sha256": "27f4a0b8aa0fa779060c421a412e66bdb33b7a2d981ff4e17fca5add77d861bc"
+  }
+ }
+}

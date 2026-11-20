@@ -1,0 +1,70 @@
+{
+ "name": "edge_start64_v1",
+ "version": "1.0.0",
+ "created_utc": "2026-11-17T04:00:00Z",
+ "description": "Edge position start=64, lengths=[1, 4, 12], A/B/B13, methods A1/A3/A7.",
+ "start": 64,
+ "lengths": [
+  1,
+  4,
+  12
+ ],
+ "seed": 20261117,
+ "injections": [
+  {
+   "id": "A",
+   "kind": "offset",
+   "amount": 20.0,
+   "direction": -1,
+   "gamma": 1.0,
+   "channels": "RGB",
+   "description": "constant RGB offset -20 inside the interval"
+  },
+  {
+   "id": "B",
+   "kind": "gamma",
+   "amount": 0.0,
+   "direction": -1,
+   "gamma": 2.0,
+   "channels": "RGB",
+   "description": "code-value gamma transform I'=255*(I/255)^2"
+  },
+  {
+   "id": "B13",
+   "kind": "gamma",
+   "amount": 0.0,
+   "direction": -1,
+   "gamma": 1.3,
+   "channels": "RGB",
+   "description": "gamma=1.3 clipping-attribution control"
+  }
+ ],
+ "methods": [
+  {
+   "id": "A1",
+   "kind": "noop",
+   "scope": "local",
+   "label": "No-op"
+  },
+  {
+   "id": "A3",
+   "kind": "offset_linear",
+   "k": 3,
+   "scope": "local",
+   "label": "Outside linear interpolation k=3 (proposed)"
+  },
+  {
+   "id": "A7",
+   "kind": "gamma_adaptive",
+   "k": 3,
+   "scope": "local",
+   "label": "Adaptive gamma to target luma"
+  }
+ ],
+ "proposed": "A3",
+ "notes": [
+  "Local scopes write back only frames in the interval; A4 is the global-write-back ablation.",
+  "All costs are measured on BT.601 luma; PSNR/SSIM on RGB/luma as documented in metrics.py.",
+  "Methods A5-A9 are CPU-only re-implementations calibrated to be comparable, not reproductions of the cited SOTA pipelines."
+ ]
+}
