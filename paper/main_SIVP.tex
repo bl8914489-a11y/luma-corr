@@ -16,7 +16,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-Blind video deflickering methods process a whole sequence and are scored on overall quality, but editing and quality-control pipelines often know, or can verify, the defective interval. We study this known-interval setting as a controlled empirical problem: how accurately can a deterministic corrector restore the interval, what happens outside it, and which corrector should be chosen? We build a reproducible benchmark of 13 sequences, 3 injections (additive offset, gamma 2.0, gamma 1.3), 3 interval lengths and 10 deterministic correctors (1,170 conditions). On all 13 sequences, the outside-linear estimator A3 reduces interval Y-MAE from 19.90 to 2.06/1.48/2.40 for offsets of length 1/4/12. Under gamma 2.0, A3 leaves 8.16/7.65/8.07, whereas a fixed inverse-gamma reference (A7f) reaches 1.46/1.48/1.45 and the adaptive A7 reaches 2.59/1.97/2.95. Local write-back changes 0\% of outside pixels; the same estimator with full-sequence write-back changes 33.2\%. All-In-One, an open deep blind baseline, reaches 12.48 Y-MAE but rewrites 99.95\% of outside pixels. We also report sensitivity, position, edge behaviour, CPU cost and a one-click reproduction package. Detection is deliberately left to the supplement: its held-out recall is 0.744, and natural flicker is not solved. The contribution is a controlled, reproducible reference for a practically relevant but often implicit setting, not a new deflickering network.
+Blind video deflickering methods process a whole sequence and are scored on overall quality, but editing and quality-control pipelines often know, or can verify, the defective interval. We study this known-interval setting as a controlled empirical problem: how accurately can a deterministic corrector restore the interval, what happens outside it, and which corrector should be chosen? We build a reproducible benchmark of 13 sequences, 3 injections (additive offset, gamma 2.0, gamma 1.3), 3 interval lengths and 10 deterministic correctors (1,170 conditions). On all 13 sequences, the outside-linear estimator A3 reduces interval Y-MAE from 19.90 to 2.06/1.48/2.40 for offsets of length 1/4/12. Under gamma 2.0, A3 leaves 8.16/7.65/8.07, whereas a fixed inverse-gamma reference (A7f) reaches 1.46/1.48/1.45 and the adaptive A7 reaches 2.59/1.97/2.95. Local write-back changes 0\% of outside pixels; the same estimator with full-sequence write-back changes 33.2\%. All-In-One, an open deep blind baseline, reaches 12.48 Y-MAE but rewrites 99.95\% of outside pixels. We also report sensitivity, position, edge behaviour, CPU cost and a one-click reproduction package. Detection is deliberately left to the supplement: its held-out recall is 0.744, and natural flicker is not solved. We position this as a reproducibility-focused empirical study: the contribution is a controlled, reproducible reference for a practically relevant but often implicit setting, not a new algorithm or a new deflickering network.
 \end{abstract}
 \keywords{video deflickering; local brightness correction; controlled benchmark; reproducibility; exposure correction}
 
@@ -42,7 +42,7 @@ This paper treats known-interval local brightness correction as a controlled exp
 \item \textbf{A reproducible audit trail.} Every frame, configuration, code tree and output is hashed; 37 unit tests and 37 frozen headline checks pass, and a one-click package reproduces the tables. Detection, natural-clip annotation and end-to-end propagation are reported in the Supplementary Material, including the negative detection result (0.744 held-out recall, 0/19 natural flicker clips).
 \end{enumerate}
 
-The paper is intentionally an empirical and reproducibility study. Its value lies in the controlled comparison, the boundary results and the audit trail, not in a claim of state-of-the-art quality.
+The paper is intentionally a reproducibility-focused empirical study. Its value lies in the controlled comparison, the boundary results and the audit trail, not in a claim of state-of-the-art quality.
 
 
 \section{Related Work}
@@ -52,7 +52,7 @@ The paper is intentionally an empirical and reproducibility study. Its value lie
 Classical deflickering corrected intensity flicker in archived film \cite{vanroosmalen1999correction} and stabilised flicker-like effects through local contrast correction \cite{delon2010stabilization}. Scale-time equalization (STE) treats flicker as a temporal instability of the frame histogram and equalizes it in a scale-time framework \cite{delon2006movie}. Later work used adaptive post-processing \cite{gandam2021efficient} and temporal reconstruction \cite{li2019video}. Learning-based BVD reconstructs a clean temporal atlas with neural filtering \cite{lei2023blind}, performs latent in-iteration deflickering for generated video \cite{duan2024diffsynth}, or removes flicker-banding with latent diffusion \cite{zhu2025rifle}. BlazeBVD \cite{qiu2024blazebvd} revisits STE and extracts deflickering priors (filtered illumination maps, exposure maps and flickering-frame indices) that guide a 2D restoration network and a lightweight 3D consistency network.
 
 
-These methods process the whole sequence and optimise whole-video quality. Our setting differs in two ways: the defect interval is known, and the objective explicitly includes not changing frames outside it. The two settings are complementary rather than competing; a blind method can be applied to an interval, but it is not designed to preserve the rest of the video.
+These methods process the whole sequence and optimise whole-video quality. Our setting differs in two ways: the defect interval is known, and the objective explicitly includes not changing frames outside it. The two settings are complementary rather than competing; a blind method can be applied to an interval, but it is not designed to preserve the rest of the video. BlazeBVD in particular is a blind atlas-based method; we use its Eq. (5) score only as a detector baseline and do not claim to improve BlazeBVD or to compare correction quality on its blind task.
 
 
 \subsection{Exposure and brightness correction}
@@ -65,12 +65,12 @@ The closest settings to ours are temporally consistent region-based video exposu
 
 \subsection{Temporal consistency in text-to-video generation}
 
-Temporal consistency in video generation has been surveyed recently \cite{yin2026survey,einabadi2026survey}. Classical blind temporal consistency \cite{bonneel2015blind}, self-supervised coherence for GAN-based video generation \cite{chu2020learning}, adaptor-based consistency for diffusion video editing \cite{song2025efficient} and temporal consistency for low-light video enhancement \cite{zhang2021learning} address related but distinct failure modes. Flicker is one of the artifacts that these lines of work try to suppress; our controlled injection can be read as a known-interval stress test for the same problem.
+Temporal consistency in video generation has been surveyed recently . Classical blind temporal consistency , self-supervised coherence for GAN-based video generation , adaptor-based consistency for diffusion video editing \cite{song2025efficient} and temporal consistency for low-light video enhancement \cite{zhang2021learning} address related but distinct failure modes. Flicker is one of the artifacts that these lines of work try to suppress; our controlled injection can be read as a known-interval stress test for the same problem.
 
 
 \subsection{Tone mapping, quality metrics and flicker measurement}
 
-Tone mapping must be temporally coherent for HDR video \cite{aydin2014temporally,oskarsson2016temporally}, and flicker-free tone mapping has been studied explicitly \cite{mujtaba2022efficient}; evaluation protocols for tone-mapped video are discussed by Eilertsen et al. \cite{eilertsen2013evaluation}. For quality, we use SSIM \cite{wang2004image}, the illumination histogram consistency metric (IHCM) \cite{chen2024illumination} and the temporal visual masking of local flicker \cite{choi2018video}. Flicker measurement has also been studied in coded-video and display contexts \cite{lim2010measurement,yang2008effective}, and neural flicker detection has been attempted \cite{patel2018effective}; recent work also analyses temporal artifacts in AI-generated video \cite{d2026temporal}.
+Tone mapping must be temporally coherent for HDR video \cite{aydin2014temporally,oskarsson2016temporally}, and flicker-free tone mapping has been studied explicitly \cite{mujtaba2022efficient}; evaluation protocols for tone-mapped video are discussed by Eilertsen et al. . For quality, we use SSIM , the illumination histogram consistency metric (IHCM) \cite{chen2024illumination} and the temporal visual masking of local flicker . Flicker measurement has also been studied in coded-video and display contexts \cite{yang2008effective}, and neural flicker detection has been attempted \cite{patel2018effective}; recent work also analyses temporal artifacts in AI-generated video \cite{d2026temporal}.
 
 
 \section{Method}
@@ -127,7 +127,7 @@ All baselines are deterministic and CPU-only; each is applied to the injected se
 \item \textbf{A9 Kalman/RTS luma stabilisation.} A 1-D random-walk Kalman filter treats the interval as missing observations and a Rauch–Tung–Striebel smoother estimates the luma trend \cite{kalman1960new}; the offset follows the smoothed trend.
 \end{itemize}
 
-\subsection{Proposed local write-back}
+\subsection{Local write-back and the A3 reference estimator}
 
 A3 estimates the clean luma trend from context and applies a per-frame additive offset to RGB. The offset is constant across pixels, so chromaticity is preserved exactly and the only nonlinearity is the final clamp to $[0,255]$. For A this offset is approximately $+20$ and recovers the frame exactly except where the injection clipped dark pixels; for B the required offset is much larger and the clamp removes highlight headroom, which is the source of the residual analysed in Section 4.3.
 
@@ -238,6 +238,29 @@ A4 Full-seq median-7 & 33.2\% & 0.91 & 33.89 & 33.89 & 3.31 \\
 The held-out CUSUM detector reaches 0.744 recall and 0.641 precision on the nine test sequences, and the natural-clip check detects 0/19 flicker clips. Both results are reported in full in the Supplementary Material. They define the boundary of the present contribution: the correction benchmark assumes a known interval, and the detector is not claimed to be a solution.
 
 
+\begin{table*}[t]
+\centering
+\caption{Detection on all 13 sequences (frame-level mean; 12-frame intervals unless noted).}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccc}
+\toprule
+Detector & R@12 & P@12 & Clean FP \\
+\midrule
+Local median (legacy) & 0.263 & 0.210 & 0.214 \\
+BlazeBVD Eq. (5), KL & 0.280 & 0.146 & 0.328 \\
+Global JS + hysteresis & 0.761 & 0.499 & 0.187 \\
+Rolling JS + CUSUM & 0.825 & 0.737 & 0.100 \\
+Fixed-length scan & 0.772 & 0.772 & — \\
+\bottomrule
+\end{tabular}}
+\end{table*}
+
+The table reports retrospective means over 13 sequences. The held-out CUSUM test split is 0.744/0.641, and the fixed-length scan falls to 0.370/0.630 at lengths 1/4; the scan result therefore depends on the candidate length. A global detector can be pushed to high recall by threshold tuning, but the same threshold does not transfer across lengths, which is why we report the held-out number rather than a tuned envelope.
+
+
+A concrete real case is clip\_017 from horse (frames 14–22, labelled flicker by the single annotator). The CUSUM score peaks at 4.08, below the alarm threshold h=8, and the two single-frame alarms are removed by the min-length rule, so the detector outputs no interval. This is the failure mode behind the 0/19 flicker recall: the natural flicker is short and low-amplitude, while the detector was calibrated for sustained plateaus.
+
+
 \subsection{B2: a deep blind baseline under the same constraint}
 
 We run the official All-In-One code and weights on thirty-nine injected cases (512$\times$512, 10,001 iterations, downsample 4; stage 1 about 8.7 minutes per case, stage 2 about 11 seconds). Table 4 compares no-op, A3 and B2 on the true interval and outside it.
@@ -277,7 +300,7 @@ Its boundary error is slightly lower on 20 of 39 cases, because a global filter 
 \textbf{Write-back scope.} A2 versus A4 is the clean ablation: same estimator, different scope. The global variant changes 33.2\% of outside pixels and pushes the 12-frame boundary error from 37.20 (A2, already failing inside) to 33.89 (A4), while A3 remains at 4.23. Scope is not a cosmetic choice.
 
 
-\textbf{Context size.} Table 4 shows that $k=1$ is often better than $k=3$: on A length 12 the Y-MAE is 1.93 for $k=1$, 2.40 for $k=3$ and 2.64 for $k=5$; on B length 12 it is 7.89, 8.07 and 8.21. The brightness curve is closer to a random walk than to a line, so distant context adds slope bias. We keep $k=3$ as the prior project's method for comparability and report this as a negative result for the "more context is better" assumption.
+\textbf{Context size.} Table 5 shows that $k=1$ is often better than $k=3$: on A length 12 the Y-MAE is 1.93 for $k=1$, 2.40 for $k=3$ and 2.64 for $k=5$; on B length 12 it is 7.89, 8.07 and 8.21. The brightness curve is closer to a random walk than to a line, so distant context adds slope bias. We keep $k=3$ as the prior project's method for comparability and report this as a negative result for the "more context is better" assumption.
 
 
 \begin{table*}[t]
@@ -334,7 +357,7 @@ B2 reduces flicker but rewrites the video. Under the task constraint "do not cha
 The scope is deliberately narrow. The benchmark contains 13 sequences from one public subset and synthetic injections; it does not establish correction accuracy on natural defects. The natural-clip study is single-annotated, has no kappa and only evaluates detection, not correction. Detection remains unsolved (0.744 held-out recall; 0/19 flicker clips). B2 is the only open deep baseline, and B1/B3-B5 were unavailable. The cost, edge and multi-interval results are included to show where the conclusions stop, not to claim generality.
 
 
-The study has clear limits. The corpus has 13 sequences, all from one dataset subset; the expansion target of 15 sequences was not met because the subset contains only 13. The defects are synthetic, not naturally occurring; the real T2V annotation study was not completed because the public archive does not identify the generating model or prompt and the natural brightness variation is continuous rather than a single bounded interval. The injection uses code-value gamma rather than physical display gamma. The detector's held-out recall is 0.744 and the end-to-end outside changed fraction is 4.01\%, both below our targets. B1 BlazeBVD could not be run because its official code is not publicly released; B3–B5 were not run because weights were unavailable. The B2 run uses 512$\times$512 instead of the official 768$\times$432 and torch 2.11 instead of the official 1.12, so it is a faithful forward pass, not a bit-exact reproduction. Finally, the cluster bootstrap has only 9-14 clusters; the intervals are wide (for example the test recall interval is 0.485-0.982) and descriptive, not a substitute for a large-sample study.
+The study has clear limits. The original development subset used by the prior project contains only three sequences (book, horse and sailboat); although the main table uses all 13, the design is not powered for sequence-level generalisation. The corpus has 13 sequences, all from one dataset subset; the expansion target of 15 sequences was not met because the subset contains only 13. The defects are synthetic, not naturally occurring; the real T2V annotation study was not completed because the public archive does not identify the generating model or prompt and the natural brightness variation is continuous rather than a single bounded interval. The injection uses code-value gamma rather than physical display gamma; no adapter or LoRA fine-tuning was run, so all deterministic correctors are training-free and the learned baseline is a forward pass only. The detector's held-out recall is 0.744 and the end-to-end outside changed fraction is 4.01\%, both below our targets. B1 BlazeBVD could not be run because its official code is not publicly released; B3–B5 were not run because weights were unavailable. The B2 run uses 512$\times$512 instead of the official 768$\times$432 and torch 2.11 instead of the official 1.12, so it is a faithful forward pass, not a bit-exact reproduction. Finally, the cluster bootstrap has only 9-14 clusters; the intervals are wide (for example the test recall interval is 0.485-0.982) and descriptive, not a substitute for a large-sample study.
 
 
 \section{Conclusion}
@@ -362,6 +385,9 @@ We presented a reproducible, controlled study of local brightness correction for
 \textbf{Use of AI tools:} [If applicable, state tool and purpose; otherwise: The authors did not use generative AI tools to draft the manuscript.]
 
 \begin{thebibliography}{99}
+\footnotesize
+\setlength{\itemsep}{0pt}
+\setlength{\parsep}{0pt}
 \bibitem{qiu2024blazebvd} Qiu, Xinmin, Han, Congying, Zhang, Zicheng, Li, Bonan, Guo, Tiande, Wang, Pingyu, Nie, Xuecheng. BlazeBVD: Make Scale-Time Equalization Great Again for Blind Video Deflickering. Computer Vision – ECCV 2024, 37–53, 2024. \url{https://doi.org/10.1007/978-3-031-72643-9_3}
 \bibitem{lei2023blind} Lei, Chenyang, Ren, Xuanchi, Zhang, Zhaoxiang, Chen, Qifeng. Blind Video Deflickering by Neural Filtering with a Flawed Atlas. 2023 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 10439–10448, 2023. \url{https://doi.org/10.1109/cvpr52729.2023.01006}
 \bibitem{duan2024diffsynth} Duan, Zhongjie, You, Lizhou, Wang, Chengyu, Chen, Cen, Wu, Ziheng, Qian, Weining, Huang, Jun. DiffSynth: Latent In-Iteration Deflickering for Realistic Video Synthesis. Machine Learning and Knowledge Discovery in Databases. Applied Data Science Track, 332–347, 2024. \url{https://doi.org/10.1007/978-3-031-70381-2_21}
@@ -383,20 +409,12 @@ We presented a reproducible, controlled study of local brightness correction for
 \bibitem{li2025osmamba} Li, Gehui, Chen, Bin, Zhao, Chen, Zhang, Lei, Zhang, Jian. OSMamba: Omnidirectional Spectral Mamba with Dual-Domain Prior Generator for Exposure Correction. 2025 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 7480–7490, 2025. \url{https://doi.org/10.1109/cvpr52734.2025.00701}
 \bibitem{dong2024ecmamba} Dong, Wei, Zhou, Han, Zhang, Yulun, Liu, Xiaohong, Chen, Jun. ECMamba: Consolidating Selective State Space Model with Retinex Guidance for Efficient Multiple Exposure Correction. Advances in Neural Information Processing Systems 37, 53438–53457, 2024. \url{https://doi.org/10.52202/079017-1693}
 \bibitem{kim2025agcsnet} Kim, Min‐ji, Deng, Qikang, Choo, DongWon, Ji, Hyo Chul, Lee, DoHoon. AGCSNet: High‐contrast image‐exposure correction with automatic illumination‐map attention‐based gamma and saturation correction. ETRI Journal, 47(4), 737–752, 2025. \url{https://doi.org/10.4218/etrij.2024-0294}
-\bibitem{yin2026survey} Yin, Zhiyu, Chen, Kehai, Bai, Xuefeng, Jiang, Ruili, Li, Juntao, Li, Hongdong, Liu, Jin, Xiang, Yang, Yu, Jun, Zhang, Min. A Survey: Spatiotemporal Consistency in Video Generation. ACM Computing Surveys, 58(12), 1–41, 2026. \url{https://doi.org/10.1145/3802588}
-\bibitem{einabadi2026survey} Einabadi, Farshad, Hilton, Adrian, Guillemaut, Jean‐Yves. A Survey of Modelling Temporal Coherence in Neural Rendering and Video Generation. Computer Graphics Forum, 2026. \url{https://doi.org/10.1111/cgf.70657}
-\bibitem{bonneel2015blind} Bonneel, Nicolas, Tompkin, James, Sunkavalli, Kalyan, Sun, Deqing, Paris, Sylvain, Pfister, Hanspeter. Blind video temporal consistency. ACM Transactions on Graphics, 34(6), 1–9, 2015. \url{https://doi.org/10.1145/2816795.2818107}
-\bibitem{chu2020learning} Chu, Mengyu, Xie, You, Mayer, Jonas, Leal-Taixé, Laura, Thuerey, Nils. Learning temporal coherence via self-supervision for GAN-based video generation. ACM Transactions on Graphics, 39(4), 2020. \url{https://doi.org/10.1145/3386569.3392457}
 \bibitem{song2025efficient} Song, Xinyuan, He, Yangfan, Li, Sida, Wang, Jianhui, He, Hongyang, Yuan, Xinhang, Wang, Ruoyu, Chen, Jiaqi, Li, Keqin, Lu, Kuan, Huo, Menghao, Li, Binxu, Liu, Pei. Efficient Temporal Consistency in Diffusion-Based Video Editing with Adaptor Modules: A Theoretical Framework. arXiv, 2025. \url{https://doi.org/10.48550/ARXIV.2504.16016}
 \bibitem{zhang2021learning} Zhang, Fan, Li, Yu, You, Shaodi, Fu, Ying. Learning Temporal Consistency for Low Light Video Enhancement from Single Images. 2021 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 4965–4974, 2021. \url{https://doi.org/10.1109/cvpr46437.2021.00493}
 \bibitem{aydin2014temporally} Aydin, Tunç Ozan, Stefanoski, Nikolce, Croci, Simone, Gross, Markus, Smolic, Aljoscha. Temporally coherent local tone mapping of HDR video. ACM Transactions on Graphics, 33(6), 1–13, 2014. \url{https://doi.org/10.1145/2661229.2661268}
 \bibitem{oskarsson2016temporally} Oskarsson, Magnus. Temporally Consistent Tone Mapping of Images and Video Using Optimal K-means Clustering. Journal of Mathematical Imaging and Vision, 57(2), 225–238, 2016. \url{https://doi.org/10.1007/s10851-016-0677-1}
 \bibitem{mujtaba2022efficient} Mujtaba, Naureen, Khan, Ishtiaq Rasool, Khan, Nadeem Ahmad, Bin Altaf, Muhammad Awais. Efficient Flicker-Free Tone mapping of HDR Videos. 2022 IEEE 24th International Workshop on Multimedia Signal Processing (MMSP), 01–06, 2022. \url{https://doi.org/10.1109/mmsp55362.2022.9950027}
-\bibitem{eilertsen2013evaluation} Eilertsen, Gabriel, Wanat, Robert, Mantiuk, Rafał K., Unger, Jonas. Evaluation of Tone Mapping Operators for HDR‐Video. Computer Graphics Forum, 32(7), 275–284, 2013. \url{https://doi.org/10.1111/cgf.12235}
-\bibitem{wang2004image} Zhou Wang, Bovik, A.C., Sheikh, H.R., Simoncelli, E.P.. Image quality assessment: from error visibility to structural similarity. IEEE Transactions on Image Processing, 13(4), 600–612, 2004. \url{https://doi.org/10.1109/tip.2003.819861}
 \bibitem{chen2024illumination} Chen, Long, Islam, Mobarakol, Clarkson, Matt, Dowrick, Thomas. Illumination Histogram Consistency Metric for Quantitative Assessment of Video Sequences. arXiv, 2024. \url{https://doi.org/10.48550/ARXIV.2405.09716}
-\bibitem{choi2018video} Choi, Lark Kwon, Bovik, Alan Conrad. Video quality assessment accounting for temporal visual masking of local flicker. Signal Processing: Image Communication, 67, 182–198, 2018. \url{https://doi.org/10.1016/j.image.2018.06.009}
-\bibitem{lim2010measurement} Lim, Jong-Min, Kang, Dong-Wook, Jung, Kyeong-Hoon. Measurement of Flickering Artifact for H.264 with Periodic I-Frame Structure. Journal of Broadcast Engineering, 15(3), 321–331, 2010. \url{https://doi.org/10.5909/jbe.2010.15.3.321}
 \bibitem{yang2008effective} Hua Yang, Boyce, Jill M., Stein, Alan. Effective flicker removal from periodic intra frames and accurate flicker measurement. 2008 15th IEEE International Conference on Image Processing, 2868–2871, 2008. \url{https://doi.org/10.1109/icip.2008.4712393}
 \bibitem{patel2018effective} Patel, Ripal, Pandey, Shubha, Patel, Chirag, Paul, Robinson. Effective Flicker Detection Technique Using Artificial Neural Network For Video. Kalpa Publications in Engineering, 1, 442–432, 2018. \url{https://doi.org/10.29007/xwg4}
 \bibitem{d2026temporal} D, Vijayakumar, P, Karunakaran, C, Balasubramaniam, V, Chethanand, B, Dinesh Kumar, V, Manoj J. Temporal Artifact Analysis for AI-Generated Video Detection Using Hybrid CNN-LSTM Architecture. 2026 Second International Conference on Multi-Agent Systems for Collaborative Intelligence (ICMSCI), 800–807, 2026. \url{https://doi.org/10.1109/icmsci67830.2026.11469605}
