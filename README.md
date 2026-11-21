@@ -40,4 +40,4 @@ Code: MIT. Manuscript: CC BY 4.0. Dataset: CC BY 4.0.
 ## Repository URL
 
 Replace the placeholder in the manuscript and README with the final GitHub URL:
-`https://github.com/[your-account]/luma-corr`.
+`https://github.com/BL8914489-A11y/luma-corr`.

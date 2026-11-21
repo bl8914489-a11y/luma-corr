@@ -250,7 +250,7 @@ We presented a reproducible, controlled study of local brightness correction for
 
 **Consent for publication:** Not applicable.
 
-**Data availability:** The dataset is publicly available from the Blind-Video-Deflickering-Dataset repository (VideoDM/Meta subset, CC BY 4.0). The code, configurations, frozen tables and reproduction package are available at https://github.com/[your-account]/luma-corr; the package contains per-frame hashes and a one-click test.
+**Data availability:** The dataset is publicly available from the Blind-Video-Deflickering-Dataset repository (VideoDM/Meta subset, CC BY 4.0). The code, configurations, frozen tables and reproduction package are available at https://github.com/BL8914489-A11y/luma-corr; the package contains per-frame hashes and a one-click test.
 
 **Author contributions:** [Author Name] conceived the study, implemented the code, ran the experiments and wrote the manuscript. [Corresponding Author] supervised the work and revised the manuscript. All authors read and approved the final manuscript.
 
