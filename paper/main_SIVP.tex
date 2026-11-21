@@ -120,7 +120,7 @@ All baselines are deterministic and CPU-only; each is applied to the injected se
 \item **A3 Outside linear $k{=}3$ (proposed).** A least-squares line is fitted to the mean luma of three clean frames on each side of the interval and evaluated inside it; the same additive offset is applied. This is the main method inherited from the prior project and the one we analyse most.
 \item \textbf{A4 Full-sequence median-7.} The A2 estimator, but the offset is applied to every frame, including the outside. It isolates the effect of write-back scope.
 \item \textbf{A5 STE-style histogram specification.} The interval frame's luma histogram is mapped to the median histogram of the clean context frames, and the luma difference is written back additively. This is a CPU approximation of the STE idea \cite{delon2006movie}, not the official BlazeBVD implementation.
-\item \textbf{A6 CLAHE.} Contrast-limited adaptive histogram equalization on luma with $8\times8$ tiles and clip limit 2.0 \cite{zuiderveld1994contrast}.
+\item \textbf{A6 CLAHE.} Contrast-limited adaptive histogram equalization on luma with $8\times8$ tiles and clip limit 2.0 .
 \item \textbf{A7 Adaptive gamma.} A per-frame gamma is solved so that the mean of $255(y/255)^\gamma$ matches the A3 target luma; the tone curve is applied to luma and written back as a luma difference.
 \item \textbf{A7f Fixed inverse gamma 2.} The same but with a fixed $\gamma=1/2$.
 \item \textbf{A8 Temporal bilateral.} A seven-frame bilateral filter along time, guided by the window median, writes back the interval \cite{tomasi1998bilateral}.
@@ -256,6 +256,9 @@ Fixed-length scan & 0.772 & 0.772 & — \\
 \end{table*}
 
 The table reports retrospective means over 13 sequences. The held-out CUSUM test split is 0.744/0.641, and the fixed-length scan falls to 0.370/0.630 at lengths 1/4; the scan result therefore depends on the candidate length. A global detector can be pushed to high recall by threshold tuning, but the same threshold does not transfer across lengths, which is why we report the held-out number rather than a tuned envelope.
+
+
+On the 43 natural clips with a bounded interval (length at least 2, not touching the clip edge), local correction reduces the first-difference luma variance from 8.84 to 0.14 (A3), 0.003 (A5) and 0.036 (A7), with 0\% outside change. This is a no-reference temporal analysis, not correction accuracy: natural clips have no clean reference, and the near-zero A5 value suggests over-smoothing rather than a better restoration. We report it only as evidence that local correction has a measurable effect on real flicker.
 
 
 A concrete real case is clip\_017 from horse (frames 14–22, labelled flicker by the single annotator). The CUSUM score peaks at 4.08, below the alarm threshold h=8, and the two single-frame alarms are removed by the min-length rule, so the detector outputs no interval. This is the failure mode behind the 0/19 flicker recall: the natural flicker is short and low-amplitude, while the detector was calibrated for sustained plateaus.
@@ -418,7 +421,6 @@ We presented a reproducible, controlled study of local brightness correction for
 \bibitem{yang2008effective} Hua Yang, Boyce, Jill M., Stein, Alan. Effective flicker removal from periodic intra frames and accurate flicker measurement. 2008 15th IEEE International Conference on Image Processing, 2868–2871, 2008. \url{https://doi.org/10.1109/icip.2008.4712393}
 \bibitem{patel2018effective} Patel, Ripal, Pandey, Shubha, Patel, Chirag, Paul, Robinson. Effective Flicker Detection Technique Using Artificial Neural Network For Video. Kalpa Publications in Engineering, 1, 442–432, 2018. \url{https://doi.org/10.29007/xwg4}
 \bibitem{d2026temporal} D, Vijayakumar, P, Karunakaran, C, Balasubramaniam, V, Chethanand, B, Dinesh Kumar, V, Manoj J. Temporal Artifact Analysis for AI-Generated Video Detection Using Hybrid CNN-LSTM Architecture. 2026 Second International Conference on Multi-Agent Systems for Collaborative Intelligence (ICMSCI), 800–807, 2026. \url{https://doi.org/10.1109/icmsci67830.2026.11469605}
-\bibitem{zuiderveld1994contrast} Zuiderveld, Karel. Contrast Limited Adaptive Histogram Equalization. Graphics Gems, 474–485, 1994. \url{https://doi.org/10.1016/b978-0-12-336156-1.50061-6}
 \bibitem{tomasi1998bilateral} Tomasi, C., Manduchi, R.. Bilateral filtering for gray and color images. Sixth International Conference on Computer Vision (IEEE Cat. No.98CH36271), 839–846, 1998. \url{https://doi.org/10.1109/iccv.1998.710815}
 \bibitem{kalman1960new} Kalman, R. E.. A New Approach to Linear Filtering and Prediction Problems. Journal of Basic Engineering, 82(1), 35–45, 1960. \url{https://doi.org/10.1115/1.3662552}
 \end{thebibliography}
